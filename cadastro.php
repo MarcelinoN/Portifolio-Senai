@@ -1,5 +1,4 @@
 <?php
-
 if( isset($_POST['submit']))
 {
     include_once('config.php');
@@ -20,11 +19,10 @@ if( isset($_POST['submit']))
         echo "Erro ao cadastrar usuário.";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +33,7 @@ if( isset($_POST['submit']))
             margin: 0;
             height: 100vh;
             display: flex;
-            justify-content: flex-end; 
+            justify-content: center; 
             align-items: center; 
             background-image: url('imagens-100317-18-9510-0.jpg'); 
             background-size: cover; 
@@ -49,6 +47,8 @@ if( isset($_POST['submit']))
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.5s ease;
             border: 2px solid transparent; 
+            display: flex;
+            flex-direction: column;
         }
         .box:hover {
             border-color: blue; 
@@ -94,6 +94,28 @@ if( isset($_POST['submit']))
         #submit:hover {
             background-color: #45a049;
         }
+        
+        .login-prompt {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .login-link {
+            font-size: 16px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            padding: 5px 10px;
+        }
+        .login-link:hover {
+            color: white;
+            background-color: #007bff;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.2s ease-in-out;
+            transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
+        }
     </style>
 </head>
 <body>
@@ -101,7 +123,7 @@ if( isset($_POST['submit']))
     <div class="box">
         <form action="cadastro.php" method="POST">
             <fieldset>
-                <legend><b>Fórmulário de Clientes</b></legend>
+                <legend><b>Fórmulário de Cadastro</b></legend>
                 <br>
                 <div class="inputBox">
                     <input type="text" name="nome" id="nome" class="inputUser" required>
@@ -129,7 +151,15 @@ if( isset($_POST['submit']))
                 <br><br>
                 <input type="submit" name="submit" id="submit">
             </fieldset>
+
+           
+            <div class="login-prompt">
+                <p>Já possui um login?</p>
+                <a href="login.php" class="login-link">Clique aqui para fazer login</a>
+            </div>
         </form>
     </div>
+
 </body>
 </html>
+

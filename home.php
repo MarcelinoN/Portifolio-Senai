@@ -1,3 +1,15 @@
+<?php
+session_start();
+//print_r($_SESSION);
+if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true))
+    {
+        unset($_SESSION['email']);
+        unset($_SESSION['senha']);
+        header('Location: login.php');
+    } 
+    $logado = $_SESSION['email'];
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -73,27 +85,47 @@
             margin: 0 15px;
         }
 
-        /* Estilos para a imagem circular com borda azul */
+        
         .profile-image {
-            width: 150px; /* Largura da imagem */
-            height: 150px; /* Altura da imagem para mantê-la circular */
-            object-fit: cover; /* Faz a imagem cobrir a área do contêiner */
-            border-radius: 50%; /* Faz a imagem circular */
-            margin-bottom: 20px; /* Espaço abaixo da imagem */
-            border: 5px solid #007bff; /* Borda azul */
+            width: 150px; 
+            height: 150px; 
+            object-fit: cover; 
+            border-radius: 50%; 
+            margin-bottom: 20px; 
+            border: 5px solid #007bff;
         }
+        
+        /* Modificação para os links de logout */
+        .logout-link {
+            color: white; /* Cor igual aos outros links */
+            text-decoration: none;
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px;
+            background-color: #007bff; /* Azul, para combinar com os outros links */
+            border: 1px solid #007bff;
+            border-radius: 5px;
+        }
+
+        .logout-link:hover {
+            background-color: #0056b3; /* Cor de fundo mais escura ao passar o mouse */
+            color: white;
+        }
+
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <a href="contatos.php">Contatos</a>
+        <a href="home.php">Sobre mim</a>
         <a href="projetos.php">Projetos</a>
         <a href="contato_direto.php">Contato Direto</a>
+        <!-- Link de Logout com cor ajustada -->
+        <a href="logout.php" class="logout-link">Logout</a>
     </div>
 
     <div class="main-container">
-        <!-- Imagem Circular com borda azul -->
+       
         <img src="Foto portifolio.jpg" alt="Minha Foto" class="profile-image">
 
         <div class="box">
@@ -116,7 +148,7 @@
             <p>Hoje, ao concluir meu curso, vejo que o aprendizado que adquiri não só me prepara para ingressar no mercado de trabalho, mas também me dá a confiança de que posso continuar a evoluir. Estou ansioso para aplicar essas competências em projetos reais, contribuindo para a inovação e o crescimento da área de tecnologia, com foco em desenvolvimento de software, redes e automação.</p>
         </div>
     </div>
-
+   
     <div class="bottom-bar">
         <a href="https://www.instagram.com/marcelinopn/" target="_blank" class="social-icons">
             <i class="fab fa-instagram"></i>
